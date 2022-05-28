@@ -1,3 +1,5 @@
+'use strict';
+const { strict } = require('assert');
 const path = require('path');
 
 module.exports = {
@@ -12,6 +14,20 @@ module.exports = {
             loader: 'babel-loader',
             test: /\.js$/,
             exclude: /node_modules/
-        }]
+        },
+        {
+            test: /\.scss$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                'sass-loader'
+            ]
+        }
+    ]
+    },
+    devtool: 'inline-source-map',
+    devServer: {
+        static: {directory : path.join(__dirname, 'public')},
+        port:8080
     }
 };
