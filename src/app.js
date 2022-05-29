@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom/client';
 import '../styles/style.scss';
 import {ThemeProvider} from '@material-ui/core';
 import {Header} from './components/header';
-import {theme} from './theme';
+import appTheme from './theme';
 
 
 // console.log("app is working!");
@@ -21,7 +21,7 @@ import {theme} from './theme';
 
 function App () {
    return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={appTheme}>
             <Header></Header>
         </ThemeProvider>
     );
