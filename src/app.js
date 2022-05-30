@@ -1,23 +1,12 @@
-// import './utils.js';
-// import validator from 'validator';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '../styles/style.scss';
-import {ThemeProvider} from '@material-ui/core';
+import {ThemeProvider} from '@mui/material/styles';
 import {Header} from './components/header';
 import appTheme from './theme';
-
-
-// console.log("app is working!");
-
-// const validMail = validator.isEmail('foo@bar.com');
-
-// console.log(validMail);
-
-// const template = React.createElement('p', {}, 'testing 123');
-// ReactDOM.render(template, document.getElementById('app'));
-
-
 
 function App () {
    return (

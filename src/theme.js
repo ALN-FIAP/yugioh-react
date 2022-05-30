@@ -1,5 +1,5 @@
-import { createTheme, Typography } from '@material-ui/core';
-import {red, grey} from '@material-ui/core/colors';
+import { createTheme } from '@mui/material/styles';
+import {red, grey} from '@mui/material/colors';
 
 export default createTheme({
     palette: {

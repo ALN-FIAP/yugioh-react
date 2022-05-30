@@ -3,11 +3,11 @@ import {
     AppBar,
     Typography,
     Grid
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import SearchBar from 'material-ui-search-bar';
 
-const useStyles = makeStyles((theme) => ({
+const styles = {
     root: {
         height: '100vh',
     },
@@ -15,8 +15,15 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: 'none',
     },
     logoBar: {
-        marginTop: theme.spacing(4)
+        mt: 4
     },
+    searchBar: {
+        mt: 2,
+        mr: 2
+    }
+};
+
+const v4Styles = makeStyles((theme) => ({
     searchBar: {
         marginTop: theme.spacing(2),
         marginRight: theme.spacing(2)
@@ -24,17 +31,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Header = () => {
-    const classes = useStyles();
     const [textValue, setTextValue] = useState(
         ''
     );
 
+    const classes = v4Styles();
     return (
-        <div className={classes.root}>
-            <AppBar position="static" color='inherit' className={classes.appBar}>
+        <div sx={styles.root}>
+            <AppBar position="static" color='inherit' sx={styles.appBar}>
                 <Grid container spacing={3}>
                     <Grid item md={2} sm ={3} xs={12}>
-                        <Typography variant="h2" className={classes.logoBar}>
+                        <Typography variant="h2" sx={styles.logoBar}>
                             Yugioh React
                         </Typography>
                     </Grid>
