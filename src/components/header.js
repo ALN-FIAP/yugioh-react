@@ -13,20 +13,25 @@ const styles = {
     },
     appBar: {
         boxShadow: 'none',
+        mr: 5
     },
     logoBar: {
-        mt: 4
-    },
-    searchBar: {
-        mt: 2,
-        mr: 2
+        my: {
+            sm: 2,
+            xs: 0
+        },
+        pl: {
+            sm: 3,
+            xs: 0
+        }
     }
 };
 
 const v4Styles = makeStyles((theme) => ({
     searchBar: {
-        marginTop: theme.spacing(2),
-        marginRight: theme.spacing(2)
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(2),
+        marginRight: theme.spacing(5),
     }
 }));
 
