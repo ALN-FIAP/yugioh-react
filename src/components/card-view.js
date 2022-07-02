@@ -4,7 +4,10 @@ import {
     Grid,
     Container,
     Box,
-    Paper
+    Paper,
+    List,
+    ListItem,
+    ListItemText
 } from '@mui/material';
 import SearchBar from 'material-ui-search-bar';
 import { grey } from '@mui/material/colors';
@@ -19,6 +22,11 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    cardInfo: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     cardTitle: {
         textAlign: 'center',
@@ -38,6 +46,8 @@ const CardImage = (props) => {
     );
 };
 
+//Could be replaced by :https://github.com/ethanselzer/react-image-magnify
+//or: https://frontend-collective.github.io/react-image-lightbox/
 const CardsCarousel = (props) => {
     return (
         <Carousel navButtonsAlwaysVisible={true} animation="slide" autoPlay={false}>
@@ -60,6 +70,20 @@ const CardTitle = (props) => {
     );
 };
 
+const CardInfo = (props) => {
+
+    return (
+        <Box sx={styles.cardInfo}>
+            <List>
+                <ListItemText primary="Type:" secondary={props.card.type} />
+                <ListItemText primary={props.card.race} inset={false}/>
+                <ListItemText primary={props.card.desc} />
+                <ListItemText primary={"ATK/" + props.card.atk + " DEF/" + props.card.def} />
+            </List>
+        </Box>
+    );
+};
+
 export const CardView = (props) => {
     return (
         <Container fixed sx={styles.container}>
@@ -69,6 +93,9 @@ export const CardView = (props) => {
                 </Grid>
                 <Grid item xs={12}>
                     <CardsCarousel cardImages={props.card.card_images} cardName={props.card.name} />
+                </Grid>
+                <Grid item xs={12}>
+                    <CardInfo card={props.card} />
                 </Grid>
             </Grid>
         </Container >

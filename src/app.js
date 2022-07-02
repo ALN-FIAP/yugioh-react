@@ -2,12 +2,13 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import {ThemeProvider} from '@mui/material/styles';
 import {Header} from './components/header';
 import {CardView} from './components/card-view';
 import appTheme from './theme';
+import {searchCardByName} from './client/ygopro-client';
 
 const darkMagicianCard = {
     "id":46986421,
@@ -459,11 +460,20 @@ const darkMagicianCard = {
  };
 
 function App () {
+   const [searchResultState, setSearchResultState] = useState({card: null});
+
+   const searchCard = async (cardName) => {
+      const searchResult = await searchCardByName(cardName);
+      setSearchResultState({card: searchResult});
+   };
    return (
-        <ThemeProvider theme={appTheme}>
-            <Header></Header>
-            <CardView card={darkMagicianCard}/>
-        </ThemeProvider>
+      <ThemeProvider theme={appTheme}>
+         <Header searchHandler={searchCard}></Header>
+         {(searchResultState.card !== null) ?
+            <CardView card={searchResultState.card} />
+            : null
+         }
+      </ThemeProvider>
     );
 }
 const root = ReactDOM.createRoot(document.getElementById('app'));

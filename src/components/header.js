@@ -35,7 +35,7 @@ const v4Styles = makeStyles((theme) => ({
     }
 }));
 
-export const Header = () => {
+export const Header = (props) => {
     const [textValue, setTextValue] = useState(
         ''
     );
@@ -59,6 +59,7 @@ export const Header = () => {
                                 //TODO: disparar chamada pra api 
                                 //setar o estado do componente de searchResult
                             
+                                props.searchHandler(textValue);
                             }} />
                     </Grid>
                 </Grid>
