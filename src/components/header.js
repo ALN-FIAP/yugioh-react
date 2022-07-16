@@ -12,8 +12,7 @@ const styles = {
         height: '100vh',
     },
     appBar: {
-        boxShadow: 'none',
-        mr: 5
+        boxShadow: 'none'
     },
     logoBar: {
         my: {

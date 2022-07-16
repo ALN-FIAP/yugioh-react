@@ -6,10 +6,8 @@ import {
     Box,
     Paper,
     List,
-    ListItem,
     ListItemText
 } from '@mui/material';
-import SearchBar from 'material-ui-search-bar';
 import { grey } from '@mui/material/colors';
 import Carousel from 'react-material-ui-carousel';
 
@@ -33,7 +31,7 @@ const styles = {
     }
 };
 
-const CardImage = (props) => {
+export const CardImage = (props) => {
     return (
         <Paper sx={styles.cardImage}>
             <img
