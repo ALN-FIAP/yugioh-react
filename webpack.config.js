@@ -23,11 +23,12 @@ module.exports = {
                 'sass-loader'
             ]
         }
-    ]
+        ]
     },
     devtool: 'inline-source-map',
     devServer: {
-        static: {directory : path.join(__dirname, 'public')},
-        port:8080
+        static: { directory: path.join(__dirname, 'public') },
+        port: 8080,
+        historyApiFallback: true
     }
 };

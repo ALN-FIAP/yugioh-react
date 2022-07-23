@@ -1,25 +1,16 @@
-import React, { useState } from 'react';
 import {
-    Typography,
-    Grid,
-    Container,
-    Box,
-    Paper,
-    List,
-    ListItemText
+    Box, Container, Grid, List,
+    ListItemText, Typography
 } from '@mui/material';
 import { grey } from '@mui/material/colors';
+import React from 'react';
 import Carousel from 'react-material-ui-carousel';
+import { CardImage } from './card-image';
 
 const styles = {
     container: {
         mt: 2,
         bgcolor: grey[300]
-    },
-    cardImage: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
     },
     cardInfo: {
         display: 'flex',
@@ -31,30 +22,17 @@ const styles = {
     }
 };
 
-export const CardImage = (props) => {
-    return (
-        <Paper sx={styles.cardImage}>
-            <img
-                src={`${props.cardUrl}?w=248&fit=crop&auto=format`}
-                srcSet={`${props.cardUrl}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt={props.cardName}
-                loading="lazy"
-            />
-        </Paper>
-    );
-};
-
 //Could be replaced by :https://github.com/ethanselzer/react-image-magnify
 //or: https://frontend-collective.github.io/react-image-lightbox/
 const CardsCarousel = (props) => {
     return (
         <Carousel navButtonsAlwaysVisible={true} animation="slide" autoPlay={false}>
-             {
-                props.cardImages.map( (item, i) => (
-                    <CardImage key={i} cardName={props.cardName} cardUrl={item.image_url} />
-                ) )
+            {
+                props.cardImages.map((item, i) => (
+                    <CardImage key={i} cardName={props.cardName} cardUrl={item.image_url} width={500} height={800} />
+                ))
             }
-            
+
         </Carousel>
     );
 };
@@ -74,7 +52,7 @@ const CardInfo = (props) => {
         <Box sx={styles.cardInfo}>
             <List>
                 <ListItemText primary="Type:" secondary={props.card.type} />
-                <ListItemText primary={props.card.race} inset={false}/>
+                <ListItemText primary={props.card.race} inset={false} />
                 <ListItemText primary={props.card.desc} />
                 <ListItemText primary={"ATK/" + props.card.atk + " DEF/" + props.card.def} />
             </List>

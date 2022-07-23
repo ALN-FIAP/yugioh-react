@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
 import {
-    AppBar,
-    Typography,
-    Grid
+    AppBar, Grid, Typography
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import SearchBar from 'material-ui-search-bar';
+import React from 'react';
 
 const styles = {
     root: {
@@ -35,16 +33,12 @@ const v4Styles = makeStyles((theme) => ({
 }));
 
 export const Header = (props) => {
-    const [textValue, setTextValue] = useState(
-        ''
-    );
-
     const classes = v4Styles();
     return (
         <div sx={styles.root}>
             <AppBar position="static" color='inherit' sx={styles.appBar}>
                 <Grid container spacing={3}>
-                    <Grid item md={2} sm ={3} xs={12}>
+                    <Grid item md={2} sm={3} xs={12}>
                         <Typography variant="h2" sx={styles.logoBar}>
                             Yugioh React
                         </Typography>
@@ -52,13 +46,13 @@ export const Header = (props) => {
                     <Grid item md={10} sm={9} xs={12}>
                         <SearchBar
                             className={classes.searchBar}
-                            value={textValue}
-                            onChange={(newValue) => setTextValue(newValue)}
-                            onRequestSearch={() => { 
+                            value={props.textValue}
+                            onChange={(newValue) => props.setTextHandler(newValue)}
+                            onRequestSearch={() => {
                                 //TODO: disparar chamada pra api 
                                 //setar o estado do componente de searchResult
-                            
-                                props.searchHandler(textValue);
+
+                                props.searchHandler();
                             }} />
                     </Grid>
                 </Grid>
